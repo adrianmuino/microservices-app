@@ -10,7 +10,8 @@ docker build -t homerun:v0.0.1 .
 ## Deploy HomeRun service using K8s
 ```bash
 cd config/k8s
-kubectl apply -f homerun.yaml
+kubectl apply -f homerun-mongo-depl.yaml
+kubectl apply -f homerun-depl.yaml
 ```
 
 ## Prepare Stats service Docker image
@@ -29,4 +30,5 @@ kubectl apply -f stats.yaml
 ```bash
 kubectl get pods
 kubectl get services
+kubectl get deployments
 ```
