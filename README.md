@@ -26,6 +26,18 @@ cd config/k8s
 kubectl apply -f stats.yaml
 ```
 
+## Prepare FrontEnd service Docker image
+```bash
+cd front-end
+docker build -t front-end:v0.0.1 .
+```
+
+## Deploy FrontEnd service using K8s
+```bash
+cd config/k8s
+kubectl apply -f front-end-depl.yaml
+```
+
 ## Verify K8s pods and services
 ```bash
 kubectl get pods
