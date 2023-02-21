@@ -1,0 +1,24 @@
+apiVersion: skaffold/v4beta2
+kind: Config
+metadata:
+  name: microservices-app
+build:
+  artifacts:
+  - image: front-end
+    context: front-end
+    docker:
+      dockerfile: Dockerfile
+  - image: homerun
+    context: HomeRun-Service
+    docker:
+      dockerfile: Dockerfile
+  - image: stats
+    context: Stats-Service
+    docker:
+      dockerfile: Dockerfile
+manifests:
+  rawYaml:
+  - config/k8s/front-end-depl.yaml
+  - config/k8s/homerun-depl.yaml
+  - config/k8s/homerun-mongo-depl.yaml
+  - config/k8s/stats.yaml
