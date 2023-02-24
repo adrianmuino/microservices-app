@@ -22,3 +22,4 @@ manifests:
   - config/k8s/homerun-depl.yaml
   - config/k8s/homerun-mongo-depl.yaml
   - config/k8s/stats.yaml
+  - config/k8s/ingress-service.yaml
