@@ -3,19 +3,19 @@ kind: Deployment
 # Use kind: StatefulSet here instead to have data persistence
 # and have same volumes assigned to corresponding containers.
 metadata:
-  name: homerun-mongod-depl
+  name: stats-mongod-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: homerun-mongo
+      app: stats-mongo
   template:
     metadata:
       labels:
-        app: homerun-mongo
+        app: stats-mongo
     spec:
       containers:
-      - name: homerun-mongo
+      - name: stats-mongo
         image: mongo
         resources:
           limits:
@@ -28,10 +28,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: homerun-mongo-service
+  name: stats-mongo-service
 spec:
   selector:
-    app: homerun-mongo
+    app: stats-mongo
   ports:
     - name: database
       protocol: TCP

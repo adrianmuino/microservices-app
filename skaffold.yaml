@@ -16,10 +16,16 @@ build:
     context: Stats-Service
     docker:
       dockerfile: Dockerfile
+  - image: query
+    context: Query-Service
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: 'src/**/*.ts'
+          dest: .
 manifests:
   rawYaml:
-  - config/k8s/front-end-depl.yaml
-  - config/k8s/homerun-depl.yaml
-  - config/k8s/homerun-mongo-depl.yaml
-  - config/k8s/stats.yaml
-  - config/k8s/ingress-service.yaml
+  - config/k8s/*
+deploy:
+  kubectl: {}

@@ -4,15 +4,37 @@ metadata:
   name: ingress-service
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
   - host: homerun-app.dev
     http:
       paths:
-      - pathType: Prefix
-        path: /api/homerun/get
+      - path: /api/homerun
+        pathType: Prefix
         backend:
           service:
             name: homerun-service
             port: 
               number: 5000
+      - path: /api/stats/?(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: stats-service
+            port:
+              number: 5100
+      - path: /api/query
+        pathType: Prefix
+        backend:
+          service:
+            name: query-service
+            port:
+              number: 5200
+      - path: /?(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: front-end-service
+            port:
+              number: 3000

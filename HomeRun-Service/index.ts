@@ -1,5 +1,5 @@
-import express, { Router } from 'express';
-import mongoose, { mongo } from 'mongoose';
+import express from 'express';
+import mongoose from 'mongoose';
 import { router } from './routes/routes';
 
 const app = express();
