@@ -26,7 +26,7 @@ Open your hosts file and add the following line at the bottom: `127.0.0.1 homeru
 
 ## Run in dev mode
 ```bash
-scaffold dev
+skaffold dev
 ```
 
 ## Troubleshooting
